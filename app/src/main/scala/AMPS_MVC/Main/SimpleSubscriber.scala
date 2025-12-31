@@ -30,7 +30,7 @@ object SimpleSubscriber {
               println(trade)
               val enrichment = TradeEnrichment.enrichData(trade,productList)
               val jsonpayload = Jsonserialize.tradeToJson(enrichment)
-             Publisher.publishing("trades.raw",jsonpayload)
+             Publisher.publishing("trades.enriched",jsonpayload)
               println("published")
             }
           case JsError(errors) =>
