@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<property name="LOG_DIR" value="logs" />
+<property name="APP_NAME" value="TradeLogs" />
+<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+<encoder>
+<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+</encoder>
+</appender>
+<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<file>${LOG_DIR}/${APP_NAME}.log</file>
+<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+<fileNamePattern>${LOG_DIR}/${APP_NAME}.%d{yyyy-MM-dd}.log</fileNamePattern>
+<maxHistory>30</maxHistory>
+<totalSizeCap>3GB</totalSizeCap>
+</rollingPolicy>
+<encoder>
+<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+</encoder>
+</appender>
+<appender name="METRICS_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<file>${LOG_DIR}/metrics.log</file>
+<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+<fileNamePattern>${LOG_DIR}/metrics.%d{yyyy-MM-dd}.log</fileNamePattern>
+<maxHistory>7</maxHistory>
+</rollingPolicy>
+<encoder>
+<pattern>%msg%n</pattern>
+</encoder>
+</appender>
+<logger name="com.example" level="DEBUG" />
+<logger name="com.crankuptheamps" level="WARN" />
+<logger name="MetricsLogger" level="INFO" additivity="false">
+<appender-ref ref="METRICS_FILE" />
+</logger>
+<root level="INFO">
+<appender-ref ref="CONSOLE" />
+<appender-ref ref="FILE" />
+</root>
+</configuration>

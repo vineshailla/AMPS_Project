@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trade Entry</title>
+    <style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+
+    /* Background image */
+    background-image: url("trade.png");
+    background-size: cover;          /* Fit full screen */
+    background-position: center;     /* Center image */
+    background-repeat: no-repeat;    /* No repeat */
+    background-attachment: fixed;    /* Stay fixed while scrolling */
+}
+
+
+/* Main container */
+#box {
+    width: 360px;
+    margin: 60px auto;
+    background-color: aqua; /* semi-transparent */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #333333;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #444444;
+}
+
+/* Input fields */
+select,
+input {
+    width: 100%;
+    padding: 7px;
+    margin-top: 5px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 9px;
+    margin-top: 18px;
+    background-color: #0066cc;
+    color: #ffffff;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #004999;
+}
+
+/* JSON output box */
+pre {
+    background-color: #111111;
+    color: #00ff00;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 4px;
+    font-size: 13px;
+    overflow-x: auto;
+}
+
+    </style>
+</head>
+
+<body>
+
+<div id="box">
+    <h2>Trade Entry</h2>
+
+    <form
+            action="trade"
+            method="POST">
+
+        <label>Symbol</label>
+        <select name="symbol" required>
+            <option value="">Select</option>
+            <option value="AAPL">APPLE</option>
+            <option value="AMZN">AMAZON</option>
+            <option value="GOOGL">GOOGLE</option>
+        </select>
+
+        <label>Side</label>
+        <select name="side" required>
+            <option value="">Select</option>
+            <option value="BUY">BUY</option>
+            <option value="SELL">SELL</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" name="quantity" min="1" required>
+
+        <label>Currency</label>
+        <select name="currency" required>
+            <option value="">Select</option>
+            <option value="USD">USD</option>
+            <option value="INR">INR</option>
+        </select>
+
+        <button type="submit">Submit Trade</button>
+    </form>
+</div>
+
+</body>
+</html>
