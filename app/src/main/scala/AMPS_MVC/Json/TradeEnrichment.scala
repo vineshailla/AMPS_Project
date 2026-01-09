@@ -8,7 +8,7 @@ object TradeEnrichment {
     val matchingProduct = product.find(_.product_name == tradeData.symbol)
     matchingProduct match {
       case Some(product) =>
-        val enrichedPrice = if(tradeData.price==0) product.price else tradeData.price
+        val enrichedPrice = if (tradeData.price == 0) product.price else tradeData.price
         val enrichedBrokerId = if (tradeData.broker_id.isEmpty) product.broker_id.toString else tradeData.broker_id
         val enrichedCommission = if (tradeData.commission == 0) product.commission else tradeData.commission
         val enrichedTax = if (tradeData.tax == 0) product.tax else tradeData.tax
@@ -20,10 +20,15 @@ object TradeEnrichment {
           commission = enrichedCommission,
           tax = enrichedTax,
           gross_amount = enrichedGrossAmount,
-          net_amount = enrichedNetAmount
+          net_amount = enrichedNetAmount,
+          status = "ENRICHED"
         )
       case None =>
         tradeData
     }
+  }
+  def isEnriched(trade:Trade):Trade= {
+    val newStatus = "ENRICHED"
+    trade.copy(status = newStatus)
   }
 }
