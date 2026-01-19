@@ -6,7 +6,7 @@ import com.crankuptheamps.client._
 object Publisher {
 
   private val client = new Client("EnrichedTradePublisher")
-   client.connect("tcp://192.168.20.184:9007/amps/json")
+   client.connect("tcp://192.168.20.60:9007/amps/json")
     client.logon()
     println("Publisher connected to AMPS")
 

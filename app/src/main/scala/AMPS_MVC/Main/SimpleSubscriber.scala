@@ -37,7 +37,7 @@ object SimpleSubscriber {
     }
 
     val client = new Client("SimpleSub")
-    client.connect("tcp://192.168.20.184:9007/amps/json")
+    client.connect("tcp://192.168.20.60:9007/amps/json")
     client.logon()
     println("Connected to AMPS")
 
